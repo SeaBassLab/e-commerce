@@ -1,0 +1,32 @@
+@import "../Vars.scss";
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .main .isHome {
+    width: 70%;
+  }
+  
+  .main__title {
+    color: white;
+    font-size: 25px;
+  }
+  
+.input {
+  background-color: rgba(255,255,255,0.1);
+  border: 2px solid white;
+  color: white;
+  font-family: $theme-font;
+  font-size: 16px;
+  height: 40px;
+  outline: none;
+  padding: 0px 20px;
+}
+
+::placeholder {
+  color: white;
+}
