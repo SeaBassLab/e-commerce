@@ -2,13 +2,10 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { loginRequest } from '../actions'
-import '../assets/styles/components/Login.scss'
-import googleIcon from '../assets/statics/google-icon.png'
-import twitterIcon from '../assets/statics/twitter-icon.png'
-import Header from '../components/Header'
+import { TextInput, Icon } from 'react-materialize'
 
 const Login = props => {
-  const [form, setValues] = useState()
+  const [ form, setValues] = useState()
 
   const handleInput = event => {
     setValues({
@@ -25,43 +22,55 @@ const Login = props => {
 
   return(
     <>
-    <Header isLogin />
-      <section className="login">
-          <section className="login__container">
+      <section className="container">
+          <section className="row">
             <h2>Inicia sesión</h2>
-            <form className="login__container--form" onSubmit={handleSubmit}>
-              <input 
-              name="email"
-              className="input_login" 
-              type="text" 
-              placeholder="Correo"
-              onChange={handleInput}
-              />
-              <input 
-              name="password"
-              className="input_login" 
-              type="password" 
-              placeholder="Contraseña" 
-              onChange={handleInput}
-              />
-              <button className="button">Iniciar sesión</button>
-              <div className="login__container--remember-me">
-                <label>
-                  <input type="checkbox" id="cbox1" value="first_checkbox" />Recuérdame
-                </label>
-                <a href="/">Olvidé mi contraseña</a>
+            <form onSubmit={handleSubmit}>
+              <div className="row">
+                <div className="input-field col s6">
+                  <TextInput
+                      email
+                      name="email"
+                      id="TextInput-4"
+                      label="Email"
+                      onChange={handleInput}
+                      validate
+                    />
+                </div>
+                <div className="input-field col s6">
+                  <TextInput
+                      id="TextInput-4"
+                      name="password"
+                      label="Password"
+                      onChange={handleInput}
+                      password
+                    />
+                </div>
               </div>
+              <button className="btn green">Iniciar sesión</button>
             </form>
-            <section className="login__container--social-media">
-              <div><img src={googleIcon} alt="inicia seción con google" /> Inicia sesión con Google</div>
-              <div><img src={twitterIcon} alt="inicia seción con Twitter" /> Inicia sesión con Twitter</div>
-            </section>
-            <p className="login__container--register">
+          <div className="row col l4">
+            <p>
+              <label>
+                  <input type="checkbox" className="filled-in" />
+                  <span>Recordarme</span>
+              </label>
+            </p>
+                <a href="/">Olvidé mi contraseña</a>
+          </div>
+           
+          <div className="row col l4">
+            <div><Icon>account_circle</Icon>Inicia sesión con Google</div>
+            <div><Icon>account_circle</Icon>Inicia sesión con Twitter</div>
+          </div>
+          <div className="row col l4">
+            <p>
               No tienes ninguna cuenta {' '}
               <Link to="/register">
                 Regístrate
               </Link>
             </p>
+          </div>
           </section>
         </section>
     </>

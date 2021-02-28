@@ -1,67 +1,81 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Header from '../components/Header'
 import Categories from '../components/Categories'
-import Carousel from '../components/Carousel'
-import CarouselItem from '../components/CarouselItem'
+import ShowCardItem from '../components/ShowCardItem'
+import electroImg from '../assets/statics/electrodomesticos4.jpg'
+import electroImg2 from '../assets/statics/electrodomesticos.png'
 import '../assets/styles/App.scss'
 
 
 
-const Home = ({ myList, search, trends, originals }) => {
+const Home = ({ search, trends, originals }) => {
         return (
-        <>
-            <Header />
-
-            {search.length > 0 ?
+        <header>           
+           {search.length > 0 ?
                 <Categories title="Resultados">
-                    <Carousel>
-                        {search.map(item =>
-                            <CarouselItem 
-                                key={item.id} 
-                                {...item}
-                            />
-                        )}
-                    </Carousel>
-            </Categories> : 
+                        <div className="row">
+                            {search.map(item =>
+                                <ShowCardItem 
+                                    key={item.id} 
+                                    {...item}
+                                />
+                            )} 
+                        </div>                                          
+                </Categories> : 
             <>
-            {myList.length > 0 &&
-                <Categories title="Mi lista">
-                    <Carousel>
-                    {myList.map(item =>
-                        <CarouselItem 
-                        key={item.id} 
-                        {...item} 
-                        isList
-                        />
-                    )}
-                    </Carousel>
-                </Categories>     
-            }
-                <Categories title="Ofertas">
-                    <Carousel>
-                        {trends.map(item =>
-                            <CarouselItem key={item.id} {...item} />
-                        )}
-                    </Carousel>
-                </Categories>
+                
+                    <section>
+                        <div className="section">
+                            <div className="fixImage">
+                                <img 
+                                className="responsive-image"
+                                src={electroImg} 
+                                alt="electrodomesticos imagen" />
+                            </div>               
+                        </div>
+                    </section>   
 
-                <Categories title="Descubrí">
-                    <Carousel>
-                        {originals.map(item =>
-                            <CarouselItem key={item.id} {...item} />
-                        )}
-                    </Carousel>
-                </Categories>
+                    <section>
+                        <div className="section">
+                            <Categories className="row" title="Ofertas">
+                                <div className="row">
+                                    {trends.map(item =>
+                                        <ShowCardItem key={item.id} {...item} />
+                                    )}
+                                </div>
+                            </Categories>
+                        </div>
+                    </section>
+                    <section>
+                        <div className="section">
+                            <div className="fixImage">
+                                <img 
+                                className="responsive-image"
+                                src={electroImg2} 
+                                alt="electrodomesticos imagen" />
+                            </div>               
+                        </div>
+                    </section>
+                    <section>
+                        <div className="section">
+                            <Categories title="Descubrí">
+                                <div className="row">
+                                    {originals.map(item =>
+                                        <ShowCardItem key={item.id} {...item} />
+                                    )}
+                                </div>
+                            </Categories>
+                        </div>
+                    </section>
+                
 
             </>           
             }           
-        </>
+        </header>
     )
 }
 const mapStateToProps = state => {
     return {
-        myList: state.myList,
         trends: state.trends,
         originals: state.originals,
         search: state.search,

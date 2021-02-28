@@ -1,15 +1,20 @@
 const reducer = (state, action) => {
     
     switch (action.type) {
-        case 'SET_FAVORITE':
+        case 'SET_ITEM_DETAIL':
+            return {
+                ...state,
+                itemDetail: [...state, action.payload]
+            }
+        case 'SET_SHOPPING':
             return {
                 ...state,
                 myList: [...state.myList, action.payload]
             }
-        case 'DELETE_FAVORITE':
+        case 'DELETE_SHOPPING':
             return {
                 ...state,
-                myList: state.myList.filter(items => items.id !== action.payload)
+                myList: []
             }
         case 'LOGIN_REQUEST':
             return {
@@ -26,10 +31,10 @@ const reducer = (state, action) => {
                 ...state,
                 user: action.payload
             }
-        case 'GET_VIDEO_SOURCE':
+        case 'GET_ITEM_DETAIL':
             return {
                 ...state,
-                playing: state.trends.find(item => item.id === Number(action.payload)) 
+                itemDetail: state.trends.find(item => item.id === Number(action.payload)) 
                     || state.originals.find(item => item.id === Number(action.payload))
                     || []
             }

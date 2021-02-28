@@ -2,15 +2,10 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { registerRequest } from '../actions'
-import Header from '../components/Header'
-import '../assets/styles/components/Register.scss'
+import { TextInput, Icon } from 'react-materialize'
 
 const Register = props => {
-    const [form, setValues] = useState({
-      name:"",
-      email:"",
-      password:"",
-    })
+    const [form, setValues] = useState()
 
     const handleInput = event => {
       setValues({
@@ -27,31 +22,46 @@ const Register = props => {
 
     return (
       <>
-      <Header isRegister />
-        <section className="register">
-          <section className="register__container">
+        <section className="container">
+          <section className="row col l6">
             <h2>Regístrate</h2>
-            <form className="register__container--form" onSubmit={handleSubmit} >
-              <input 
-                name="name"
-                className="input_login" 
-                type="text" 
-                placeholder="Nombre" 
-                onChange={handleInput}
-              />
-              <input 
-                name="email"
-                className="input_login" 
-                type="text" 
-                placeholder="Correo" 
-              />
-              <input 
-                name="password"
-                className="input" 
-                type="password" 
-                placeholder="Contraseña" 
-              />
-              <button className="button">Registrarme</button>
+            <form className="col s12"  onSubmit={handleSubmit} >
+              <div className="row">
+              <div className="row">
+                <TextInput 
+                  name="name"
+                  id="TextInput-4"
+                  type="text" 
+                  label="First Name"
+                  onChange={handleInput}
+                />
+                <TextInput 
+                  name="last-name"
+                  id="TextInput-4" 
+                  label="Last Name"
+                  onChange={handleInput} 
+                  validate
+                />
+              </div>
+              <div className="row col l6">
+                <TextInput
+                  email
+                  name="email"
+                  id="TextInput-4"
+                  label="Email"
+                  onChange={handleInput}
+                  validate
+                />
+                <TextInput 
+                  id="TextInput-4"
+                  name="password"
+                  label="Password"
+                  onChange={handleInput}
+                  password 
+                />
+              </div>
+              <button className="btn grenn">Registrarme</button>
+              </div>
             </form>
             <Link to="/login">
               Iniciar sesión

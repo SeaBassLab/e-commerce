@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { searchRequest, cleanSearch } from '../actions'
-import '../assets/styles/components/Search.scss'
 import classNames from 'classnames'
 
 const Search = (props) => {
@@ -26,14 +25,16 @@ const Search = (props) => {
         isHome
     })
     return (
-        <section className="main">
-            <input 
-                className={inputStyle} 
+            <div className="input-field">
+                <input 
+                id="autocomplete-input" 
+                className="autocomplete"         
                 type="text"
-                placeholder="Buscar..." 
+                placeholder="  Buscar..." 
                 onChange={handleSearch}
             />
-        </section>
+            </div>
+
     )
 }
 

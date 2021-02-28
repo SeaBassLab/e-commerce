@@ -1,9 +1,11 @@
 {
+  "homepage": "https://seabasslab.github.io/e-commerce",
   "name": "e-commerce",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "start": "webpack serve --mode development --env development"
@@ -13,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.13.1",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.13.5",
     "@babel/preset-react": "^7.12.13",
     "babel-eslint": "^10.1.0",
@@ -23,15 +26,18 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
+    "materialize-css": "^1.0.0-rc.2",
     "md5": "^2.3.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-materialize": "^3.9.7",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "css-loader": "^5.0.2",
     "file-loader": "^6.2.0",
+    "gh-pages": "^3.1.0",
     "html-loader": "^1.3.2",
     "html-webpack-plugin": "^5.2.0",
     "mini-css-extract-plugin": "^1.3.9",

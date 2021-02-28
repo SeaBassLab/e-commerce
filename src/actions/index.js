@@ -1,10 +1,15 @@
-export const setFavorite = payload => ({
-    type: 'SET_FAVORITE',
+export const setItemDetail = payload => ({
+    type: 'SET_ITEM_DETAIL',
     payload,
 })
 
-export const deleteFavorite = payload => ({
-        type:'DELETE_FAVORITE',
+export const setShopping = payload => ({
+    type: 'SET_SHOPPING',
+    payload,
+})
+
+export const deleteShopping = payload => ({
+        type:'DELETE_SHOPPING',
         payload,
 })
 
@@ -23,8 +28,8 @@ export const registerRequest = payload => ({
     payload,
 })
 
-export const getVideoSource = payload => ({
-    type: 'GET_VIDEO_SOURCE',
+export const getItemDetail = payload => ({
+    type: 'GET_ITEM_DETAIL',
     payload,
 })
 
